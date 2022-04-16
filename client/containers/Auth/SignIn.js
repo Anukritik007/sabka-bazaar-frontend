@@ -6,11 +6,11 @@ import AuthContext from "../../AuthContext";
 const SignIn = () => {
   const { toggleUserAuthentication } = useContext(AuthContext);
   const history = useHistory();
-  const intialState = {
+  const initialState = {
     email: "",
     password: "",
   };
-  const [userDetails, setUserDetails] = useState(intialState);
+  const [userDetails, setUserDetails] = useState(initialState);
   const [validation, setValidation] = useState("");
 
   const onFormSubmit = (e) => {
@@ -35,7 +35,7 @@ const SignIn = () => {
       <section className="register-form">
         <form onSubmit={onFormSubmit}>
           <input
-            placeholder="Email"
+            placeholder="Email *"
             value={userDetails.email}
             required
             onChange={(event) =>
@@ -43,7 +43,7 @@ const SignIn = () => {
             }
           />
           <input
-            placeholder="Password"
+            placeholder="Password *"
             type="password"
             value={userDetails.password}
             required
@@ -59,8 +59,24 @@ const SignIn = () => {
           >
             {validation}
           </p>
-          <button>SignIn</button>
+          <button
+            type="submit"
+            disabled={!(userDetails.email && userDetails.password)}
+            className="auth-button"
+          >
+            SignIn
+          </button>
         </form>
+        <div className="divider">
+          <span>or</span>
+        </div>
+        <button
+          type="button"
+          className="auth-button"
+          onClick={() => history.push("/sign-up")}
+        >
+          Create an account
+        </button>
       </section>
     </div>
   );

@@ -71,7 +71,7 @@ const Register = () => {
       <section className="register-form">
         <form onSubmit={onFormSubmit}>
           <input
-            placeholder="First name"
+            placeholder="First name *"
             required
             value={userDetails.firstName}
             onChange={(event) =>
@@ -86,7 +86,7 @@ const Register = () => {
             }
           />
           <input
-            placeholder="Email"
+            placeholder="Email *"
             required
             value={userDetails.email}
             onChange={(event) =>
@@ -94,7 +94,7 @@ const Register = () => {
             }
           />
           <input
-            placeholder="Password"
+            placeholder="Password *"
             type="password"
             required
             value={userDetails.password}
@@ -103,7 +103,7 @@ const Register = () => {
             }
           />
           <input
-            placeholder="Confirm Password"
+            placeholder="Confirm Password *"
             type="password"
             required
             value={userDetails.confirmPwd}
@@ -119,7 +119,20 @@ const Register = () => {
           >
             {validation.statusErrorMessage || validation.statusSuccessMessage}
           </p>
-          <button>Sign up</button>
+          <button
+            type="submit"
+            disabled={
+              !(
+                userDetails.firstName &&
+                userDetails.email &&
+                userDetails.password &&
+                userDetails.confirmPwd
+              )
+            }
+            className="auth-button"
+          >
+            Sign up
+          </button>
         </form>
       </section>
     </div>

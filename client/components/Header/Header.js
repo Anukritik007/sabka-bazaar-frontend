@@ -43,6 +43,7 @@ const Header = () => {
             <ul className="links">
               <li
                 onClick={() => {
+                  sessionStorage.clear();
                   sessionStorage.setItem("status", "");
                   toggleUserAuthentication();
                 }}

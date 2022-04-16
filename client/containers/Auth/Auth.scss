@@ -29,14 +29,33 @@ $light-gray:#c8cbce61;
                 border-bottom: 2px solid #51dae2;
             }
         }
+    }
 
-        button {
-            background: $primary-color;
-            padding: 10px 20px;
-            color: white;
-            border: none;
-            width: 100%;
-            margin-top: 2em;
+    button.auth-button {
+        cursor: pointer;
+        background: $primary-color;
+        padding: 10px 20px;
+        color: white;
+        border: none;
+        width: 100%;
+        margin: 2em 0;
+
+        &:disabled {
+            background: gray;
+        }
+    }
+
+    .divider {
+        position: relative;
+        margin: 1em 0;
+        border-top: 1px solid $light-gray;
+
+        span {
+            position: absolute;
+            left: 47%;
+            top: -13px;
+            background: white;
+            padding: 0 0.5em;
         }
     }
 
