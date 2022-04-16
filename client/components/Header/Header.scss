@@ -9,6 +9,10 @@ $light-gray:#c8cbce61;
   top: 0;
   z-index: 1;
 
+  .hamburger {
+    display: none;
+  }
+
   .navbar {
     height: 100%;
     display: flex;
@@ -109,10 +113,65 @@ $light-gray:#c8cbce61;
 // mobile
 @media only screen and(max-width:420px) {
   .header {
-    height: 4rem;
+    overflow: hidden;
+    transition: all 0.3s linear;
+
+    &.collapse-header {
+      height: 4rem;
+
+      .hamburger {
+        transform: rotate(0deg);
+      }
+    }
+
+    &.expand-header {
+      height: 20rem;
+
+      .hamburger {
+        transform: rotate(90deg);
+      }
+
+      .menubar {
+        ul.hamburger-menu {
+          list-style: none;
+          padding: 0 0 0 1rem;
+
+          li {
+
+            &:focus {
+              background: $light-gray;
+            }
+
+            a {
+              display: inline-block;
+              width: 100%;
+              padding: 1rem;
+              color: black;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+
+    .hamburger {
+      font-size: 2rem;
+      padding: 0 1.5rem;
+      background: transparent;
+      border-color: transparent;
+      transition: all 0.3s linear;
+    }
 
     .navbar {
+      height: 4rem;
+      justify-content: space-between;
+
+      .hamburger {
+        display: block;
+      }
+
       .brand-name {
+
         .brand-logo {
           cursor: pointer;
           height: 3rem;
@@ -120,9 +179,8 @@ $light-gray:#c8cbce61;
       }
 
       .left-nav {
-        .tabs {
-          display: none;
-        }
+        display: none;
+
       }
 
       .right-nav {
